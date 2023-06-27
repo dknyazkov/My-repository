@@ -10,11 +10,11 @@ public class Child extends Person{
 
     @Override
     public String toString() {
-        return "Child{" +
-                "login='" + login + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", isMan=" + isMan +
+        return "Child{\n" +
+                "login='" + login + "\n" +
+                ", name='" + name + "\n" +
+                ", age=" + age + "\n" +
+                ", isMan=" + isMan + "\n" +
                 '}';
     }
 }
