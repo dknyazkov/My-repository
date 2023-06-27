@@ -48,14 +48,14 @@ public class Main {
 
         //Таск 4
         List<Person> personStream = parents.stream()
-                .filter(parent -> !parent.isMan && parent.getChildren().stream().anyMatch(child -> child.getAge() < 12))
-                .toList();
+                .filter(parent -> !parent.isMan)
+                .filter(parent->childrenBefore12(parent)).toList();
         System.out.println(personStream);
 
         //Таск 5
-     parents.stream()
+        parents.stream()
                 .flatMap(parent -> parent.getChildren().stream())
-             .map(child -> child.getAge())
+                .map(child -> child.getAge())
                 .distinct()
                 .peek(System.out::println)
                 .collect(Collectors.toList());
@@ -63,5 +63,10 @@ public class Main {
 
     }
 
+    private static Boolean childrenBefore12(Person person) {
+      return   person.getChildren().stream()
+                .anyMatch(child -> child.getAge() < 12);
+
+    }
 
 }
