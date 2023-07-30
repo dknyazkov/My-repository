@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Oswald:wght@300&family=Pacifico&display=swap');
+.navbar-expand-lg{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+}
+.nav-link{
+    font-family:Oswald;
+    font-size:xx-large;
+}
+#navbarSupportedContent{
+    padding-left: 30px;
+}
+
+#hov:hover{
+    background: #FF8000; /* Цвет фона под ссылкой */
+    color: #ffe; /* Цвет ссылки */
+}
+#hov1:hover{
+    background: #FF8000; /* Цвет фона под ссылкой */
+    color: #ffe; /* Цвет ссылки */
+}
+#hov2:hover{
+    background: #FF8000; /* Цвет фона под ссылкой */
+    color: #ffe; /* Цвет ссылки */
+}
+table {
+    width: 80%;
+    margin-bottom: 20px;
+    border: 15px solid #FF8000;
+    border-top: 5px solid #FF8000;
+    border-collapse: collapse;
+}
+table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #FF8000;
+    border: none;
+    border-bottom: 5px solid #FF8000;
+}
+table td {
+    padding: 5px;
+    border: none;
+    border-bottom: 5px solid #FF8000;
+}
