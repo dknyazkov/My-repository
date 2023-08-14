@@ -58,7 +58,7 @@ public class ClientService {
 
 
         }
-        throw new ClientNotFoundException();
+        throw new ClientNotFoundException("Client or password is wrong");
     }
 
 }

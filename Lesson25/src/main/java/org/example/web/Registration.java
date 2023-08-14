@@ -1,5 +1,6 @@
 package org.example.web;
 
+import org.example.exceptions.ClientNotFoundException;
 import org.example.service.ClientService;
 
 import javax.servlet.ServletException;
@@ -20,9 +21,9 @@ public class Registration extends HttpServlet {
         ClientService clientService = new ClientService();
         try {
             clientService.addUser(login, password, Integer.parseInt(age), email);
-            resp.getWriter().println("New user created");
-        } catch (RuntimeException runtimeException) {
-            req.getRequestDispatcher("Error.jsp").forward(req, resp);
+            req.getRequestDispatcher("Authorization.jsp").forward(req, resp);
+        } catch (ClientNotFoundException clientNotFoundException) {
+            throw new ClientNotFoundException("Client or password is wrong");
 
         }
     }

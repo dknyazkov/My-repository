@@ -10,7 +10,7 @@
 </head>
 <body>
 <form method="post" action="/create">
-    <select name="add">
+    <select name="active">
         <option value="going for a walk" selected>going for a walk</option>
         <option value="getting a shower">getting a shower</option>
         <option value="cooking">cooking</option>
@@ -21,14 +21,11 @@
     </select>
     <input type="hidden" name="login" value="${client.login}">
     <input type="submit" value="add">
-    <c:if test="${client.size==0}">
-        <h3>Tasks not found,
-            please add new ones</h3>
-    </c:if>
+
 </form>
 <ul style="margin: auto;color:darkblue">
     <c:forEach var="activity" items="${active}">
-        <form method="post" action="/change" name="change">
+              <form method="post" action="/change" name="change">
             <li><h3>${activity}, status ${activity.status} <input type="submit" value="change"/></h3>
                 <input type="hidden" name="id" value="${activity.id}">
                 <input type="hidden" name="status" value="${activity.status}">

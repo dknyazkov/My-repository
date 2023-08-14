@@ -1,6 +1,8 @@
 package org.example.web;
 
+import org.example.domain.Activities;
 import org.example.domain.Client;
+import org.example.domain.Status;
 import org.example.service.ClientService;
 
 import javax.servlet.ServletException;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/show")
 public class ShowComplete extends HttpServlet {
@@ -16,8 +20,15 @@ public class ShowComplete extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
         Client client = ClientService.clientMap.get(login);
-        req.setAttribute("active", client.getCompleteActivities());
-        req.setAttribute("client", client);
+        List<Activities> tempList = new ArrayList<>();
+        for (Activities activity : client.getActivities()
+        ) {
+            if (activity.status.equals(Status.completed)) {
+                tempList.add(activity);
+            }
+        }
+
+        req.setAttribute("active", tempList);
         req.getRequestDispatcher("/ToDo.jsp").forward(req, resp);
     }
 }

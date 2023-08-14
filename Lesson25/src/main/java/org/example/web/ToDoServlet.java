@@ -19,13 +19,9 @@ public class ToDoServlet extends HttpServlet {
         Client client = ClientService.clientMap.get(login);
 
         req.setAttribute("active", client.getActivities());
-        req.setAttribute("client", client);
+        req.getSession().setAttribute("client", client);
         req.getRequestDispatcher("/ToDo.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-    }
 }

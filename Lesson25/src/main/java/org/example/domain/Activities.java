@@ -7,9 +7,8 @@ import java.util.UUID;
 public class Activities {
 
     public String name;
-    public String status = "created";
+    public Status status = Status.created;
     public UUID id;
-    boolean isComplete = false;
 
 
     public Activities(String name) {
@@ -28,17 +27,14 @@ public class Activities {
         return id;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
-    public void setComplete(boolean complete) {
-        isComplete = complete;
-    }
 
     @Override
     public String toString() {

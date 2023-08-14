@@ -15,7 +15,7 @@ import java.io.IOException;
 public class CreateTasks extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String active = req.getParameter("add");
+        String active = req.getParameter("active");
         String login = req.getParameter("login");
         Activities activities = new Activities(active);
         Client client = ClientService.clientMap.get(login);

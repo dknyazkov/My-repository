@@ -12,9 +12,8 @@ public class Client {
     public String password;
     public Integer age;
     public String email;
-    public List<Activities> completeActivities = new ArrayList<>();
     public List<Activities> listOfActivities = new ArrayList<>();
-    public Integer size;
+
 
 
     public Client(String login, String password, Integer age, String email, List<Activities> listOfActivities) {
@@ -36,9 +35,6 @@ public class Client {
         return listOfActivities;
     }
 
-    public List<Activities> getCompleteActivities() {
-        return completeActivities;
-    }
 
     public String getLogin() {
         return login;

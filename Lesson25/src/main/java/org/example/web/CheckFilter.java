@@ -27,7 +27,7 @@ public class CheckFilter implements Filter {
             clientService.checkPassword(login, password);
             chain.doFilter(request, response);
         } catch (ClientNotFoundException cl) {
-            request.getRequestDispatcher("ClientNotFound.jsp").forward(request, response);
+            throw new ClientNotFoundException("Client or password is wrong");
         }
     }
 
