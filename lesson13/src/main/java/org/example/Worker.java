@@ -1,6 +1,6 @@
 package org.example;
 
-abstract public class Worker {
+abstract public class Worker implements Comparable<Worker>{
     String firstName;
     String lastName;
     Boolean isMan;
