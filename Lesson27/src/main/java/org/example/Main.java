@@ -13,6 +13,7 @@ public class Main {
         StudentCreateService studentCreateService = new StudentCreateService();
         University university = new University();
         university.setTitle("BGU");
-        studentCreateService.save("John", "Moscow", 20, Faculty.MATH, true, university,new Date(100,9,01));
+        Student student = studentCreateService.create("John", "Moscow", 20, Faculty.MATH, true, university, new Date(100, 9, 01));
+        studentCreateService.save(student);
     }
 }
