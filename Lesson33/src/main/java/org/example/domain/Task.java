@@ -15,16 +15,17 @@ public class Task {
     Integer id;
     String title;
     String description;
+    @Version
+    Integer version;
     @Enumerated(EnumType.STRING)
     StatusOfTask status;
     @ToString.Exclude
-    @ManyToOne
+    @ManyToOne()
     Person person;
 
-    public Task(String title, String description, StatusOfTask status, Person person) {
+    public Task(String title, String description, StatusOfTask status) {
         this.title = title;
         this.description = description;
         this.status = status;
-        this.person = person;
     }
 }

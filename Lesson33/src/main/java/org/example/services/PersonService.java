@@ -1,5 +1,7 @@
 package org.example.services;
 
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
 import org.example.AppSessionFactory;
@@ -9,10 +11,10 @@ import org.example.domain.Task;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class PersonService {
-    public PersonService() {
-    }
+import javax.persistence.PrePersist;
 
+@NoArgsConstructor
+public class PersonService {
     public void savePerson(Person person) {
         Session session = AppSessionFactory.getSessionFactory();
         Transaction transaction = session.beginTransaction();
@@ -26,7 +28,6 @@ public class PersonService {
         Session session = AppSessionFactory.getSessionFactory();
         Transaction transaction = session.beginTransaction();
         session.delete(person);
-        List<Task> tasks = person.getTasks();
         transaction.commit();
         session.close();
 
@@ -45,7 +46,8 @@ public class PersonService {
     public void withActiveTasks() {
         Session session = AppSessionFactory.getSessionFactory();
         Transaction transaction = session.beginTransaction();
-        List<Person> list = session.createQuery("select p from Task as t join t.person as p where t.status!=:st").setParameter("st", StatusOfTask.DONE).list();
+        List<Person> list = session.createQuery("select p from Task as t join t.person as p where t.status!=:st")
+                .setParameter("st", StatusOfTask.DONE).list();
         System.out.println(list);
         transaction.commit();
         session.close();
@@ -60,4 +62,6 @@ public class PersonService {
         session.close();
         return person;
     }
+
 }
+

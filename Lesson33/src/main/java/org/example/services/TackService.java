@@ -7,6 +7,7 @@ import org.example.domain.Task;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.LockModeType;
 import java.util.List;
 
 public class TackService {
@@ -21,7 +22,7 @@ public class TackService {
     public Task getTask(Integer id) {
         try (Session session = AppSessionFactory.getSessionFactory()) {
             Transaction transaction = session.beginTransaction();
-            Task task = session.find(Task.class, id);
+            Task task = session.find(Task.class, id, LockModeType.OPTIMISTIC);
             transaction.commit();
             return task;
         }
