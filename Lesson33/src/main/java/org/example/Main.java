@@ -14,28 +14,21 @@ import java.util.List;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person("Ted", TypeOfUser.ADMIN, new Date(100, 8, 21), true);
-        Person person1 = new Person("Bob", TypeOfUser.USER, new Date(81, 2, 3), true);
-        Task task = new Task("Cleaning", "Home cleaning", StatusOfTask.IN_PROGRESS, person);
-        Task task1 = new Task("TV", "Watching TV", StatusOfTask.NEW, person);
-        Task task2 = new Task("Play", "Playing computer games", StatusOfTask.DONE, person1);
-        person.setTasks(List.of(task, task1));
-        person1.setTasks(List.of(task2));
         PersonService personService = new PersonService();
         TackService tackService = new TackService();
+        Person person = new Person("Ted", TypeOfUser.ADMIN, new Date(100, 8, 21), true);
+        Person person1 = new Person("Bob", TypeOfUser.USER, new Date(81, 2, 3), true);
+        Task task = new Task("Cleaning", "Home cleaning", StatusOfTask.IN_PROGRESS);
+        Task task1 = new Task("TV", "Watching TV", StatusOfTask.NEW);
+        Task task2 = new Task("Play", "Playing computer games", StatusOfTask.IN_PROGRESS);
+        person.setTasks(List.of(task, task1));
+        person1.setTasks(List.of(task2));
         personService.savePerson(person);
         personService.savePerson(person1);
-        task1.setPerson(person);
         tackService.changeStatus(task2, StatusOfTask.IN_PROGRESS);
-        tackService.saveTask(task1);
-        task.setPerson(person);
-        tackService.saveTask(task);
-        tackService.saveTask(task2);
+        personService.deletePerson(person);
+
         personService.withActiveTasks();
-        personService.deletePerson(person1);
-
-
-        Person person2 = personService.getPerson(1);
 
     }
 
