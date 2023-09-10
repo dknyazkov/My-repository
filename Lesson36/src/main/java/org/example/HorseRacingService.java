@@ -1,8 +1,6 @@
 package org.example;
 
 import lombok.Getter;
-import org.example.Pair;
-import org.example.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -27,7 +25,7 @@ public class HorseRacingService {
             sum = scanner.nextInt();
         }
     }
-
+@BenchTime
     public void racing(Integer sum, Integer numberOfPair) {
         for (int i = 1; i <= 5; i++) {
             Pair.couple.sort(Pair::compareTo);
@@ -37,14 +35,14 @@ public class HorseRacingService {
                 pairs.setSpeed(pairs.getSpeed() + new Random().nextInt(10));
             }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
         System.out.println("Победитель - пара номер " + Pair.couple.get(0).getNumber() + "!");
         if (Pair.couple.get(0).getNumber() == numberOfPair) {
-            wallet += sum;
+            wallet += sum * 2;
             System.out.println("Вы победили!");
         } else {
             wallet -= sum;
