@@ -1,6 +1,7 @@
 package org.example;
 
 import lombok.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @ToString
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @Setter
-@Component
+@Scope("prototype")
 public class Rider {
     private String name;
     private Integer age;
