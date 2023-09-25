@@ -7,18 +7,22 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/book">
-    <p><strong>Название книги:</strong>
-    <p><input name="name"  placeholder="Введите название книги">${name_error}</p>
-    <p><strong>Возрастное ограничение:</strong>
-    <p><input name="age"  required placeholder="Введите возраст">${age_error}</p>
+<a href="/book?language=en">en</a>
+<a href="/book?language=ru">ru</a>
+<f:form action="/book" method="post"   >
+    <p><strong><spring:message code="label.nameOfBook" /></strong>
+    <p><input name="name"  placeholder="">${name_error}</p>
+    <p><strong><spring:message code="label.ageLimit" /></strong>
+    <p><input name="age"  required placeholder="">${age_error}</p>
     <p><input type="submit" value="Поиск"></p>
-</form>
+</f:form>
 <ul style="margin: auto;color:darkblue">
     <c:forEach var="Book" items="${Book}">
         <form method="post" action="/change" name="change">
