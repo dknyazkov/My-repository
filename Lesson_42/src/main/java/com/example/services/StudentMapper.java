@@ -10,11 +10,13 @@ import java.util.List;
 @Mapper(componentModel="spring")
 public interface StudentMapper {
     @Mapping(target = "id",source = "id")
+    @Mapping(target = "ids",source = "order")
     @Mapping(target = "name",source = "name")
     @Mapping(target = "age",source = "age")
     @Mapping(target = "university",source = "university")
     StudentEntity toEntity(StudentDTO dto);
     @Mapping(target = "id",source = "id")
+    @Mapping(target = "order",source = "ids")
     @Mapping(target = "name",source = "name")
     @Mapping(target = "age",source = "age")
     @Mapping(target = "university",source = "university")
