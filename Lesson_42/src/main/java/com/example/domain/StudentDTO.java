@@ -4,13 +4,22 @@ package com.example.domain;
 import lombok.Data;
 
 import java.util.UUID;
+
 @Data
 public class StudentDTO {
     private UUID id;
     private String name;
     private Integer age;
-    University university;
+    private University university;
+    public  Integer order;
 
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
 
     public UUID getId() {
         return id;
@@ -52,5 +61,8 @@ public class StudentDTO {
         this.name = name;
         this.age = age;
         this.university = university;
+        this.order=order;
+
+
     }
 }

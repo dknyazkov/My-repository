@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.UUID;
+
 @Entity
 @Data
 @Table(name = "Student")
@@ -12,23 +13,18 @@ public class StudentEntity {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    private   UUID id;
-
-    private   String name;
-
+    private UUID id;
+    private String name;
+    private Integer ids;
     private Integer age;
     @Enumerated(EnumType.STRING)
-    University university;
+    private University university;
+
 
     public StudentEntity() {
     }
 
-    public StudentEntity(UUID id, String name, Integer age, University university) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.university = university;
-    }
+
 
     public UUID getId() {
         return id;
@@ -61,6 +57,13 @@ public class StudentEntity {
     public void setUniversity(University university) {
         this.university = university;
     }
+
+
+    public Integer getIds() {
+        return ids;
+    }
+
+    public void setIds(Integer ids) {
+        this.ids = ids;
+    }
 }
-
-

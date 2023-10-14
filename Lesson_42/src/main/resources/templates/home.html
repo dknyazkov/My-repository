@@ -5,17 +5,33 @@
     <title>Title</title>
 </head>
 <body>
+<div th:if="${bull}">
+    Text
+
+</div>
+<form action="/student/search" method="get">
+    Search by<br>
+    Name <input type="text" name="name"><br>
+    Age <input type="text" name="age"><br>
+    University <input type="text" name="university"><br>
+    <input type="submit" value="search">
+</form>
+
+<hr>
 <form action="/student" method="post" th:object="${student}">
     <input type="text" th:field="*{name}" th:text="Name"><br>
     <input type="text" th:field="*{age}" th:text="Age"><br>
     <input type="text" th:field="*{university}" th:text="University"><br>
+    <input type="text" th:field="*{order}" th:text="Order"><br>
     <button>Add</button>
 </form>
+<hr>
 <ul>
     <li th:each="item:${students}">
-        <p th:text="${item.name} "></p>
+        [[${item.name}]]
+        <a th:href="@{/student/orderUp(id=${item.id})}"> up</a>
+        <a th:href="@{/student/orderDown(id=${item.id})}"> down</a>
     </li>
-
 </ul>
 </body>
 </html>
