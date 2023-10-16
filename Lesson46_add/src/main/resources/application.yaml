@@ -1,0 +1,5 @@
+server:
+  port: 8080
+client:
+  cars: http://127.0.0.1:8081/cars
+
