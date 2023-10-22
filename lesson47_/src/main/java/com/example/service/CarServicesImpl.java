@@ -5,12 +5,14 @@ import com.example.domain.CarDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
+@Validated
 public class CarServicesImpl implements CarService {
 
     private final CarClient carClient;
