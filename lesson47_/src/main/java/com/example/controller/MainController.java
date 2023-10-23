@@ -5,15 +5,18 @@ import com.example.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/main")
 public class MainController {
     private final CarService service;
+
     @GetMapping("/car")
-    public CarDTO getById(@RequestParam(name = "id")UUID id) {
+    public CarDTO getById(@RequestParam(name = "id") UUID id) {
         return service.findById(id);
     }
 
@@ -22,12 +25,11 @@ public class MainController {
         return service.getAll();
     }
 
-@PostMapping
-public CarDTO save(@RequestBody CarDTO carDTO) {
-    return service.save(carDTO);
+    @PostMapping
+    public CarDTO save(@Valid @RequestBody CarDTO carDTO) {
+        return service.save(carDTO);
 
-}
-
+    }
 
 
 }
