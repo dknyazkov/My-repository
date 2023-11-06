@@ -3,17 +3,29 @@ package com.example.lesson53;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Locale;
-
 public class SearchServiceTest {
+    private String first = new String("Hello");
+    private SearchService searchService = new SearchService();
+    private String second = new String();
+
     @Test
     public void testSearchIndex() {
-        SearchService searchService = new SearchService();
-        String first = new String("Hello");
-        String second = new String("El");
+        second = "el";
         Integer integer = searchService.searchIndex(first, second);
         Assertions.assertEquals(1, integer);
+    }
 
+    @Test
+    public void testErrorString() {
+        second = "Qw";
+        Integer integer = searchService.searchIndex(first, second);
+        Assertions.assertEquals(-1, integer);
+    }
 
+    @Test
+    public void testIgnoreRegister() {
+        second = "EL";
+        Integer integer = searchService.searchIndex(first, second);
+        Assertions.assertEquals(1, integer);
     }
 }
